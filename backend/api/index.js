@@ -1,0 +1,58 @@
+const express = require('express');
+const dotenv = require('dotenv');
+const cors = require('cors');
+const connectDB = require('../config/db');
+const { createWeaviateSchema } = require('../config/weaviateClient');
+
+const userRoutes = require('../routes/userRoutes');
+const documentAnalysisRoutes = require('../routes/documentAnalysisRoutes');
+const contractManagementRoutes = require('../routes/contractManagementRoutes');
+const riskAnalysisRoutes = require('../routes/riskAnalysisRoutes');
+const caseAnalysisRoutes = require('../routes/caseAnalysisRoutes');
+const chatRoutes = require('../routes/chatRoutes'); // استيراد مسارات المحادثة
+
+dotenv.config();
+
+const app = express();
+
+app.use(cors());
+
+app.use((req, res, next) => {
+    next();
+});
+
+app.get('/', (req, res) => {
+    res.send('Qanon.ai Backend is running!');
+});
+
+app.use('/api/tools/document-analysis', documentAnalysisRoutes);
+app.use('/api/contract-management', contractManagementRoutes);
+app.use('/api/risk-analysis', riskAnalysisRoutes);
+app.use('/api/case-analysis', caseAnalysisRoutes);
+
+app.use('/api/users', express.json(), express.urlencoded({ extended: false }), userRoutes);
+
+app.use('/api/chat', chatRoutes);
+
+app.use((req, res, next) => {
+  const error = new Error(`Not Found - ${req.originalUrl}`);
+  res.status(404);
+  next(error);
+});
+
+app.use((err, req, res, next) => {
+  const statusCode = res.statusCode === 200 ? 500 : res.statusCode;
+  res.status(statusCode);
+  res.json({
+    message: err.message,
+    stack: process.env.NODE_ENV === 'production' ? null : err.stack,
+  });
+});
+
+if (!global.isDbConnected) {
+    connectDB();
+    createWeaviateSchema();
+    global.isDbConnected = true;
+}
+
+module.exports = app;
