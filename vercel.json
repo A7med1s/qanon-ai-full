@@ -22,10 +22,10 @@
     }
   ],
   "env": {
-    "MONGO_URI": "@mongo_uri",
-    "JWT_SECRET_KEY": "@jwt_secret_key",
-    "EMAIL_USER": "@email_user",
-    "EMAIL_PASS": "@email_pass",
-    "GOOGLE_GEMINI_API_KEY": "@google_gemini_api_key"
+    "MONGO_URI": "mongodb+srv://ninja12samy120:AhmedSamy12%40@qanon-ai-db.fd5s7vm.mongodb.net/?retryWrites=true&w=majority&appName=qanon-ai-db",
+    "JWT_SECRET_KEY": "9163437522",
+    "EMAIL_USER": "qanon.ai12@gmail.com",
+    "EMAIL_PASS": "jbgkcawnckoarpky",
+    "GOOGLE_GEMINI_API_KEY": "AIzaSyDu-M6Xl13LmvlLAabS4hl1qNQt0YiOMJg"
   }
 }
