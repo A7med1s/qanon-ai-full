@@ -1,6 +1,7 @@
 import React, { createContext, useState, useEffect, useContext } from 'react';
 import axios from 'axios';
 import { jwtDecode } from 'jwt-decode'; 
+const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
 
 export const AuthContext = createContext();
 
@@ -10,7 +11,7 @@ export const AuthProvider = ({ children }) => {
 
   const login = async (email, password) => {
     try {
-      const res = await axios.post('http://localhost:5000/api/users/login', { email, password });
+      const res = await axios.post(`${BACKEND_URL}/api/users/login`, { email, password });
       localStorage.setItem('userToken', res.data.token);
       localStorage.setItem('sessionId', res.data.sessionId);
       const userData = {
@@ -32,7 +33,7 @@ export const AuthProvider = ({ children }) => {
 
   const register = async (name, email, phone, password) => {
     try {
-      const res = await axios.post('http://localhost:5000/api/users/register', { name, email, phone, password });
+      const res = await axios.post(`${BACKEND_URL}/api/users/register`, { name, email, phone, password });
       
       return true;
 
@@ -49,7 +50,7 @@ const logout = async () => {
 
   if (token && sessionId) {
     try {
-      await axios.post('http://localhost:5000/api/users/logout', { sessionId }, {
+      await axios.post(`${BACKEND_URL}/api/users/logout`, { sessionId }, {
         headers: {
           Authorization: `Bearer ${token}`
         }
