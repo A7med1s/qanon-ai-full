@@ -22,7 +22,7 @@ const DashboardPage = () => {
       }
 
       try {
-        const response = await axios.get(+import.meta.env.VITE_BACKEND_URL+'/api/users/me', {
+          const response = await axios.get(+import.meta.env.VITE_BACKEND_URL+'/api/users/me', {
           headers: {
             Authorization: `Bearer ${userToken}`,
           },
