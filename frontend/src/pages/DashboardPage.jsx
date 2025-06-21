@@ -22,7 +22,7 @@ const DashboardPage = () => {
       }
 
       try {
-        const response = await axios.get(import.meta.env.VITE_BACKEND_URL+'/api/users/me', {
+        const response = await axios.get('http://localhost:5000/api/users/me', {
           headers: {
             Authorization: `Bearer ${userToken}`,
           },
@@ -91,7 +91,7 @@ const DashboardPage = () => {
             className="flex flex-col sm:flex-row items-center justify-center mb-8 pb-6 border-b border-gray-200 dark:border-gray-700"
         >
             <div className="text-center sm:text-right" >
-                <h2 className="text-3xl sm:text-4xl font-bold text-gray-800 dark:text-white">{userData.name}</h2>
+                <h2 className="text-3xl sm:text-4xl font-bold text-gray-800 dark:text-white capitalize">{userData.name}</h2>
                 
             </div>
         </motion.div>
@@ -101,11 +101,11 @@ const DashboardPage = () => {
                 initial={{ opacity: 0, x: i18n.language === 'ar' ? 20 : -20 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.5, delay: 0.4 }}
-                className="flex items-center p-5 bg-gray-100 dark:bg-gray-700 rounded-xl shadow-md transform hover:scale-102 transition-transform duration-300"
+                className="flex items-center p-3 md:p-5 bg-gray-100 dark:bg-gray-700 rounded-xl shadow-md transition-transform duration-300"
             >
-                <FaEnvelope className="text-black dark:text-white text-4xl mx-4" />
+                <FaEnvelope className="text-black dark:text-white text-2xl md:text-4xl mx-2 md:mx-4" />
                 <div className="flex-grow text-right" style={{ direction: i18n.language === 'ar' ? 'rtl' : 'ltr', textAlign: i18n.language === 'ar' ? 'right' : 'left' }}>
-                    <p className="text-xl font-semibold text-gray-800 dark:text-white capitalize">{userData.email}</p>
+                    <p className="text-sm md:text-xl font-semibold text-gray-800 dark:text-white break-all">{userData.email}</p>
                 </div>
             </motion.div>
 
@@ -113,11 +113,11 @@ const DashboardPage = () => {
                 initial={{ opacity: 0, x: i18n.language === 'ar' ? -20 : 20 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.5, delay: 0.5 }}
-                className="flex items-center p-5 bg-gray-100 dark:bg-gray-700 rounded-xl shadow-md transform hover:scale-102 transition-transform duration-300"
+                className="flex items-center p-3 md:p-5 bg-gray-100 dark:bg-gray-700 rounded-xl shadow-md transition-transform duration-300"
             >
-                <FaPhone className="text-blue-600 dark:text-blue-400 text-4xl mx-4" />
+                <FaPhone className="text-blue-600 dark:text-blue-400 text-2xl md:text-4xl mx-2 md:mx-4" />
                 <div className="flex-grow text-right" style={{ direction: i18n.language === 'ar' ? 'rtl' : 'ltr', textAlign: i18n.language === 'ar' ? 'right' : 'left' }}>
-                    <p className="text-xl font-semibold text-gray-800 dark:text-white">{userData.phone}</p>
+                    <p className="text-sm md:text-xl font-semibold text-gray-800 dark:text-white">{userData.phone}</p>
                 </div>
             </motion.div>
         </div>
@@ -126,12 +126,12 @@ const DashboardPage = () => {
                 initial={{ opacity: 0, x: i18n.language === 'ar' ? 20 : -20 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.5, delay: 0.4 }}
-                className="flex items-center p-5 bg-gray-100 dark:bg-gray-700 rounded-xl shadow-md transform hover:scale-102 transition-transform duration-300"
+                className="flex items-center p-3 md:p-5 bg-gray-100 dark:bg-gray-700 rounded-xl shadow-md transition-transform duration-300"
             >
-                <FaCreditCard className="text-green-600 dark:text-green-400 text-4xl mx-4" />
+                <FaCreditCard className="text-green-600 dark:text-green-400 text-2xl md:text-4xl mx-2 md:mx-4" />
                 <div className="flex-grow text-right" style={{ direction: i18n.language === 'ar' ? 'rtl' : 'ltr', textAlign: i18n.language === 'ar' ? 'right' : 'left' }}>
                     <p className="text-gray-600 dark:text-gray-300 text-sm">{t('subscription_status')}:</p>
-                    <p className="text-xl font-semibold text-gray-800 dark:text-white capitalize">{t(userData.subscriptionStatus)}</p>
+                    <p className="text-sm md:text-xl font-semibold text-gray-800 dark:text-white break-all">{t(userData.subscriptionStatus)}</p>
                 </div>
             </motion.div>
 
@@ -139,12 +139,12 @@ const DashboardPage = () => {
                 initial={{ opacity: 0, x: i18n.language === 'ar' ? -20 : 20 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.5, delay: 0.5 }}
-                className="flex items-center p-5 bg-gray-100 dark:bg-gray-700 rounded-xl shadow-md transform hover:scale-102 transition-transform duration-300"
+                className="flex items-center p-3 md:p-5 bg-gray-100 dark:bg-gray-700 rounded-xl shadow-md transition-transform duration-300"
             >
-                <FaCalendarAlt className="text-purple-600 dark:text-purple-400 text-4xl mx-4" />
+                <FaCalendarAlt className="text-purple-600 dark:text-purple-400 text-2xl md:text-4xl mx-2 md:mx-4" />
                 <div className="flex-grow text-right" style={{ direction: i18n.language === 'ar' ? 'rtl' : 'ltr', textAlign: i18n.language === 'ar' ? 'right' : 'left' }}>
                     <p className="text-gray-600 dark:text-gray-300 text-sm">{t('subscription_end_date')}:</p>
-                    <p className="text-xl font-semibold text-gray-800 dark:text-white">{subscriptionEndDate}</p>
+                    <p className="text-sm md:text-xl font-semibold text-gray-800 dark:text-white">{subscriptionEndDate}</p>
                 </div>
             </motion.div>
         </div>

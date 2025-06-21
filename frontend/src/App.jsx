@@ -67,14 +67,14 @@ function App() {
                 className="text-center mt-8 mb-32 flex justify-center gap-4"
               >
                   {!isAuthenticated && ( 
-                      <Link to="/login" className="inline-block bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-8 rounded-full transition duration-300 ease-in-out transform hover:scale-105 shadow-xl text-lg flex items-center gap-2">
-                          <FaSignInAlt className="text-xl" /> {t('login')}
+                      <Link to="/login" className="inline-block bg-blue-600 hover:bg-blue-700 text-white font-bold rounded-full transition duration-300 ease-in-out transform hover:scale-105 shadow-xl text-lg flex items-center gap-2 py-2 px-5 md:py-3 md:px-6 text-sm">
+                          <FaSignInAlt className="text-base md:text-lg" /> {t('login')}
                       </Link>
                   )}
 
                   {!isAuthenticated && (
-                      <Link to="/register" className="inline-block border border-blue-600 text-blue-600 dark:text-blue-400 hover:bg-blue-50 dark:hover:bg-gray-700 hover:text-blue-700 font-bold py-3 px-8 rounded-full transition duration-300 ease-in-out transform hover:scale-105 shadow-xl text-lg flex items-center gap-2">
-                          <FaUserPlus className="text-xl" /> {t('register')}
+                      <Link to="/register" className="inline-block border border-blue-600 text-blue-600 dark:text-blue-400 hover:bg-blue-50 dark:hover:bg-gray-700 hover:text-blue-700 font-bold py-3 px-8 rounded-full transition duration-300 ease-in-out transform hover:scale-105 shadow-xl text-lg flex items-center gap-2 py-2 px-5 md:py-3 md:px-6 text-sm">
+                          <FaUserPlus className="text-base md:text-lg" /> {t('register')}
                       </Link>
                   )}
 

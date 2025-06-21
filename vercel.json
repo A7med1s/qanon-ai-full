@@ -11,10 +11,14 @@
       "config": { "distDir": "dist" }
     }
   ],
-  "routes": [
+  "routes":  [
     {
       "src": "/api/(.*)",
       "dest": "/backend/api/index.js"
+    },
+    {
+      "src": "/[^.]+",
+      "dest": "/frontend/index.html"
     },
     {
       "src": "/(.*)",
