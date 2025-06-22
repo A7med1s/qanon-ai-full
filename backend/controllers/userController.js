@@ -5,8 +5,9 @@ const { sendVerificationEmail, sendResetPasswordEmail } = require('../services/e
 
 const registerUser = asyncHandler(async (req, res) => {
     const { name, email, password, phone } = req.body;
+    const lowerCaseEmail = email.toLowerCase();
 
-    const emailExists = await User.findOne({ email });
+    const emailExists = await User.findOne({ email: lowerCaseEmail });
     if (emailExists) {
         res.status(400);
         throw new Error('User with that email already exists.');
@@ -22,7 +23,7 @@ const registerUser = asyncHandler(async (req, res) => {
     
     const user = new User({
         name,
-        email,
+        email: lowerCaseEmail,
         password, 
         phone: phone || null,
         isVerified: false,
@@ -58,8 +59,8 @@ const registerUser = asyncHandler(async (req, res) => {
 
 const loginUser = asyncHandler(async (req, res) => {
     const { email, password } = req.body;
-
-    const user = await User.findOne({ email });
+const lowerCaseEmail = email.toLowerCase();
+    const user = await User.findOne({ email :lowerCaseEmail  });
 
     if (!user) {
         res.status(401);
