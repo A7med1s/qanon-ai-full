@@ -12,9 +12,8 @@ const analyzeRisks = asyncHandler(async (req, res) => {
     let { contractText, outputFormat } = req.body;
 
     if (req.file) {
-        try {
-            contractText = await extractTextFromFile(req.file.path);
-            await fs.unlink(req.file.path);
+         try {
+            contractText = await extractTextFromFile(req.file.buffer, req.file.originalname);
         } catch (error) {
             res.status(400);
             throw new Error('Failed to extract text from uploaded file: ' + error.message);

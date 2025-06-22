@@ -12,9 +12,8 @@ const analyzeCase = asyncHandler(async (req, res) => {
     let { caseText, outputFormat } = req.body;
 
     if (req.file) {
-        try {
-            caseText = await extractTextFromFile(req.file.path);
-            await fs.unlink(req.file.path);
+       try {
+            caseText = await extractTextFromFile(req.file.buffer, req.file.originalname);
         } catch (error) {
             res.status(400);
             throw new Error('Failed to extract text from uploaded file: ' + error.message);

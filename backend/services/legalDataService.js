@@ -1,4 +1,3 @@
-const fs = require('fs/promises'); 
 const path = require('path'); 
 const pdf = require('pdf-parse'); 
 const mammoth = require('mammoth'); 
@@ -6,16 +5,13 @@ const { client: weaviateClient } = require('../config/weaviateClient');
 const { EmbeddingsClass, textSplitter } = require('../config/aiConfig');
 
 const LEGAL_DATA_DIR = path.join(__dirname, '..', 'legal_data'); 
-
 /**
- * @param {string} filePath 
- * @returns {Promise<string>} 
+ * @param {Buffer} fileBuffer - 
+ * @param {string} originalname -
+ * @returns {Promise<string>} -
  */
-const extractTextFromFile = async (filePath) => {
-
-    
-    const ext = path.extname(filePath).toLowerCase(); 
-    const fileBuffer = await fs.readFile(filePath); 
+const extractTextFromFile = async (fileBuffer, originalname) => {
+    const ext = path.extname(originalname).toLowerCase(); 
 
     if (ext === '.pdf') {
         const data = await pdf(fileBuffer);
@@ -25,11 +21,13 @@ const extractTextFromFile = async (filePath) => {
         return result.value;
     } else if (ext === '.txt') {
         return fileBuffer.toString('utf8');
-    } 
+    }
     else {
-        throw new Error(`Unsupported file type: ${ext}`);
+        throw new Error(`Unsupported file type: ${ext}. Supported types: .pdf, .docx, .txt, image/*.`);
     }
 };
+
+
 
 const loadLegalDataToWeaviate = async () => {
     console.log('Starting to load legal data to Weaviate...');

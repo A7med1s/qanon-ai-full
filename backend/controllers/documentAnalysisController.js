@@ -63,8 +63,7 @@ const processRequest = async (req, res, promptTemplate, docxTitle, responseJsonK
 
     if (req.file) {
         try {
-            contentToProcess = await extractTextFromFile(req.file.path);
-            await fs.unlink(req.file.path);
+            contentToProcess = await extractTextFromFile(req.file.buffer, req.file.originalname);
         } catch (error) {
             res.status(400);
             throw new Error('Failed to extract text from uploaded file: ' + error.message);
