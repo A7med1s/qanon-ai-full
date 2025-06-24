@@ -9,8 +9,7 @@ const documentAnalysisRoutes = require('./routes/documentAnalysisRoutes');
 const contractManagementRoutes = require('./routes/contractManagementRoutes');
 const riskAnalysisRoutes = require('./routes/riskAnalysisRoutes');
 const caseAnalysisRoutes = require('./routes/caseAnalysisRoutes');
-const chatRoutes = require('./routes/chatRoutes');
-
+const legalQnARoutes = require('./routes/legalQnARoutes');
 dotenv.config();
 
 connectDB();
@@ -22,7 +21,6 @@ const app = express();
 app.use(cors());
 
 app.use((req, res, next) => {
-    // console.log(`DEBUG (Server): Incoming request: ${req.method} ${req.originalUrl}`);
     next();
 });
 
@@ -35,7 +33,7 @@ app.use('/api/tools/document-analysis', documentAnalysisRoutes);
 app.use('/api/contract-management', contractManagementRoutes);
 app.use('/api/risk-analysis', riskAnalysisRoutes);
 app.use('/api/case-analysis', caseAnalysisRoutes);
-app.use('/api/chat', chatRoutes); 
+app.use('/api/legal-qna', legalQnARoutes);
 
 app.use('/api/users', express.json(), express.urlencoded({ extended: false }), userRoutes);
 

@@ -214,6 +214,12 @@
 "terms_and_conditions": "الشروط والأحكام",
 "and": "و",
 "privacy_policy_link_text": "سياسة الخصوصية",
-"under_development": "تحت التطوير"
+"under_development": "تحت التطوير",
+"description_legal_qna_simple": "اطرح أي سؤال قانوني حول القانون المصري، واحصل على إجابة مباشرة من خبيرنا الذكي.",
+"ask_question_title": "اطرح سؤال قانوني",
+"enter_your_question": "أدخل سؤالك هنا:",
+"ask_question_placeholder": "مثال: ما هي شروط صحة العقد في القانون المصري؟",
+"ask_button": "اسأل",
+"empty_question_error": "لا يمكن إرسال سؤال فارغ."
 
 }
