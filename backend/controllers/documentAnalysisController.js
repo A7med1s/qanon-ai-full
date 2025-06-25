@@ -1,6 +1,6 @@
 const asyncHandler = require('express-async-handler');
 const { chatModel } = require('../config/aiConfig');
-const fs = require('fs/promises');
+// const fs = require('fs/promises');
 const { extractTextFromFile } = require('../services/legalDataService');
 const { Document, Packer, Paragraph, HeadingLevel, AlignmentType } = require('docx');
 

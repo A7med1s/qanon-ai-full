@@ -2,7 +2,7 @@ const asyncHandler = require('express-async-handler');
 const { chatModel } = require('../config/aiConfig');
 const { extractTextFromFile } = require('../services/legalDataService');
 const { Document, Packer, Paragraph, HeadingLevel, AlignmentType } = require('docx');
-const fs = require('fs/promises');
+// const fs = require('fs/promises');
 
 
 const cleanTextForDocx = (text) => {
@@ -140,7 +140,6 @@ const rephraseContract = asyncHandler(async (req, res) => {
     العقد الأصلي:
     "${contractText}"
 
-    العقد المعاد صياغته:
     `;
 
     try {

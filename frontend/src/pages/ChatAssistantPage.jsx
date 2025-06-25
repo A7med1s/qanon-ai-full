@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion } from 'framer-motion';
 import { FaPaperclip, FaPaperPlane, FaSpinner, FaRobot, FaUser, FaDownload, FaCopy, FaExclamationCircle } from 'react-icons/fa'; // تم إضافة FaExclamationCircle هنا
 import axios from 'axios';
 import { useTranslation } from 'react-i18next';

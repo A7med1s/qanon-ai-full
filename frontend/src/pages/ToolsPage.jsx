@@ -46,7 +46,7 @@ const ToolsPage = () => {
       description: t('description_legal_qna'),
       icon: FaQuestion,
       path: '/tools/legal-qna',
-      isUnderDevelopment: true 
+      isUnderDevelopment: false 
     },
     {
       id: 6,

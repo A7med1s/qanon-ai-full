@@ -2,7 +2,7 @@ const asyncHandler = require('express-async-handler');
 const { chatModel } = require('../config/aiConfig');
 const { extractTextFromFile } = require('../services/legalDataService');
 const { Document, Packer, Paragraph, TextRun, AlignmentType } = require('docx');
-const fs = require('fs/promises');
+// const fs = require('fs/promises');
 
 const cleanTextForDocx = (text) => {
     return text ? text.replace(/\0/g, '').replace(/\u00A0/g, ' ') : '';

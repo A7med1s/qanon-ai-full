@@ -1,12 +1,8 @@
-// backend/api/index.js
-
 const express = require('express');
 const dotenv = require('dotenv');
-// const cors = require('cors'); // **احذف استيراد cors لو موجود هنا**
 const connectDB = require('../config/db');
 const { createWeaviateSchema } = require('../config/weaviateClient');
 
-// استيراد المسارات
 const userRoutes = require('../routes/userRoutes');
 const documentAnalysisRoutes = require('../routes/documentAnalysisRoutes');
 const contractManagementRoutes = require('../routes/contractManagementRoutes');

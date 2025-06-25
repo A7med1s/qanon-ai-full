@@ -1,7 +1,6 @@
-// frontend/src/pages/LegalQnAPage.jsx
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { FaQuestion, FaPaperPlane, FaSpinner, FaCopy, FaDownload } from 'react-icons/fa';
+import { FaQuestion, FaSpinner, FaCopy, FaDownload } from 'react-icons/fa';
 import axios from 'axios';
 import { useTranslation } from 'react-i18next';
 import { useAuth } from '../context/AuthContext';
@@ -18,14 +17,12 @@ const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
   const [outputFormat, setOutputFormat] = useState('text');
 
-  // توجيه المستخدم إذا لم يكن مسجل دخول
   useEffect(() => {
     if (!isAuthenticated) {
       navigate('/login');
     }
   }, [isAuthenticated, navigate]);
 
-  // تنظيف الحالة عند تحميل المكون
   useEffect(() => {
     setAnswer('');
     setQuestion('');
@@ -35,7 +32,7 @@ const [error, setError] = useState('');
     e.preventDefault();
     setLoading(true);
     setAnswer('');
-    setError(''); // تأكد من وجود state لـ error (يمكنك إضافتها: const [error, setError] = useState('');)
+    setError(''); 
 
     if (!userToken) {
       setError(t('login_required_to_use_tool'));
@@ -44,7 +41,7 @@ const [error, setError] = useState('');
     }
 
     if (!question.trim()) {
-      setError(t('empty_question_error')); // رسالة لو السؤال فاضي
+      setError(t('empty_question_error'));
       setLoading(false);
       return;
     }
@@ -56,14 +53,6 @@ const [error, setError] = useState('');
       const formData = new FormData();
   formData.append('question', question);
   formData.append('outputFormat', outputFormat);
-
-  // **أضف هذا الجزء الجديد لـ Debugging FormData**
-  console.log('DEBUG (Frontend - QnA): FormData content:');
-  for (let pair of formData.entries()) {
-      console.log(pair[0]+ ': ' + pair[1]);
-  }
-  console.log('DEBUG (Frontend - QnA): Sending request to:', `http://localhost:5000/api/legal-qna/ask`);
-  // **نهاية جزء Debugging FormData**
 
   try {
       const response = await axios.post(import.meta.env.VITE_BACKEND_URL+ `/api/legal-qna/ask`, formData, {

@@ -1,8 +1,6 @@
-import React from 'react';
 import { motion } from 'framer-motion';
-import { FaEnvelope, FaPhone, FaWhatsapp, FaMapMarkerAlt, FaQuestionCircle, FaDollarSign, FaInfoCircle } from 'react-icons/fa'; // أيقونات جديدة
+import { FaEnvelope, FaPhone, FaWhatsapp, FaQuestionCircle, FaDollarSign, FaInfoCircle } from 'react-icons/fa'; // أيقونات جديدة
 import { useTranslation } from 'react-i18next';
-import { Link } from 'react-router-dom';
 const ContactPage = () => {
   const { t } = useTranslation();
 
