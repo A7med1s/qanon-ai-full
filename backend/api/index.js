@@ -21,8 +21,8 @@ const cors = require('cors');
 
 const allowedOrigins = [
   'http://localhost:5173', 
-  'https://qanon-ai.vercel.app', 
-  /^https:\/\/qanon-ai-.+\.vercel\.app$/, 
+  'https://qanon-ai-full.vercel.app', 
+  /^https:\/\/qanon-ai-full-.+\.vercel\.app$/, 
 ];
 
 app.use(cors({
