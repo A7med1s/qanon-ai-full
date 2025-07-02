@@ -1,4 +1,3 @@
-import React from 'react';
 import { FaRobot, FaFileAlt, FaHandshake, FaQuestion, FaExclamationTriangle, FaGavel } from 'react-icons/fa';
 import { motion } from 'framer-motion';
 import { useTranslation } from 'react-i18next';
@@ -10,22 +9,14 @@ const ToolsPage = () => {
   const tools = [
     {
       id: 1,
-      name: t('document_analysis'),
-      description: t('description_document_analysis'),
-      icon: FaFileAlt,
-      path: '/tools/document-analysis',
+      name: t('case_analysis'),
+      description: t('description_case_analysis'),
+      icon: FaGavel,
+      path: '/tools/case-analysis',
       isUnderDevelopment: false 
     },
     {
       id: 2,
-      name: t('contract_management'),
-      description: t('description_contract_management'),
-      icon: FaHandshake,
-      path: '/tools/contract-management',
-      isUnderDevelopment: false 
-    },
-    {
-      id: 3,
       name: t('risk_analysis'),
       description: t('description_risk_analysis'),
       icon: FaExclamationTriangle,
@@ -33,11 +24,19 @@ const ToolsPage = () => {
       isUnderDevelopment: false
     },
     {
+      id: 3,
+      name: t('document_analysis'),
+      description: t('description_document_analysis'),
+      icon: FaFileAlt,
+      path: '/tools/document-analysis',
+      isUnderDevelopment: false 
+    },
+    {
       id: 4,
-      name: t('case_analysis'),
-      description: t('description_case_analysis'),
-      icon: FaGavel,
-      path: '/tools/case-analysis',
+      name: t('contract_management'),
+      description: t('description_contract_management'),
+      icon: FaHandshake,
+      path: '/tools/contract-management',
       isUnderDevelopment: false 
     },
     {

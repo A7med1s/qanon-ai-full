@@ -76,28 +76,29 @@ const lowerCaseEmail = email.toLowerCase();
         const sessionId = crypto.randomBytes(16).toString('hex');
 
         if (user.activeSessions.length >= user.maxConcurrentSessions) {
-            res.status(403);
-            throw new Error(`Maximum number of active sessions (${user.maxConcurrentSessions}) reached.`);
+            const oldestSessionId = user.activeSessions.shift(); 
         }
+
 
         user.activeSessions.push(sessionId);
         await user.save();
-
-        res.json({
+    const token = user.generateAuthToken();
+  res.json({
             _id: user._id,
             name: user.name,
             email: user.email,
             phone: user.phone,
             role: user.role,
             subscriptionStatus: user.subscriptionStatus,
-            token: user.generateAuthToken(),
+            token: token,
             sessionId: sessionId
         });
     } else {
         res.status(401);
-        throw new Error('Invalid email or password.');
+        throw new Error('Invalid email or password (Password mismatch).');
     }
 });
+
 
 
 
