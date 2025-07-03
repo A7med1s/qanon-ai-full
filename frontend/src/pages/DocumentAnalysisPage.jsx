@@ -18,15 +18,25 @@ const DocumentAnalysisPage = () => {
 
   useEffect(() => {
     setResult('');
-    setSelectedFile(null);
-    setInputText('');
+    // setSelectedFile(null);
+    // setInputText('');
     setQuery('');
     setRephraseStyle('');
   }, [activeTool]);
 
   const handleFileChange = (event) => {
-    setSelectedFile(event.target.files[0]);
-  };
+  const file = event.target.files[0];
+  if (file) {
+    setSelectedFile(file);
+    setInputText('');
+    setError('');
+    setMessage('');
+  } else {
+    setSelectedFile(null);
+    // setInputText(''); 
+    setError(t('please_select_file_to_process')); 
+  }
+};
 const handleSubmit = async (e) => {
     e.preventDefault();
 
